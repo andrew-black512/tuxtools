@@ -23,17 +23,18 @@ photos = flickr.photos.search(user_id=user_id, \
                             **extra_params)
 for photo in photos['photos']['photo']:
     tags=photo['tags']
-    #print (type(tags))
-    x= re.search(unwanted,tags)
-    
-    date = photo['datetaken'][0:10]
-    if date != date_prev:
-        print("------------------")
-        print(date)
-        date_prev = date 
 
-    print(f'  {photo["title"]}' )
-    print ("    " + photo['url_m'])
-    print ("    " + photo['tags'])
-    
-    print ()
+    if not re.search(unwanted,tags) :
+        ## re.search(f'\b{unwanted}\b',tags) :
+   
+        date = photo['datetaken'][0:10]
+        if date != date_prev:
+            print("------------------")
+            print(date)
+            date_prev = date 
+
+        print(f'  {photo["title"]}' )
+        print ("    " + photo['url_m'])
+        print ("    " + photo['tags'])
+        
+        print ()
