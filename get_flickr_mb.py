@@ -5,11 +5,12 @@ import flickrapi
 import flickr_config
 import pprint
 import re
+import sys
 
 extra_params={}
 # For command line
-user_id='lesleyablack' #'andrewblack'
-min_taken_date = '2024-08-29'
+user_id = sys.argv[1]  # eg'lesleyablack' or 'andrewblack'
+min_taken_date = sys.argv[2 ] # eg '2024-08-29'
 unwanted = 'churchdetail'
 
 
