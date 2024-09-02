@@ -1,0 +1,5 @@
+Changed to require params 
+
+./get_flickr_mb.py andrewblack 2022-11
+
+Date can be YYYY YYYY-MM YYYY-MM-DD
