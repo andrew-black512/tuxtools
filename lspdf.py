@@ -28,7 +28,7 @@ def list_files_with_page_counts_and_word_counts():
     if file.endswith('.pdf'):
       num_pages = len(PyPDF2.PdfReader(open(file, 'rb')).pages)
       num_words = count_words_in_pdf(file)
-      print(f"{file}\t{num_pages}\t{num_words}")
+      print(f"{file:<40}{num_pages:>10}{num_words:>20}")
     else:
       print(file)
 
