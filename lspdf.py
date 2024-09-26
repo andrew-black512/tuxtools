@@ -1,0 +1,38 @@
+#!/usr/bin/python3
+
+import PyPDF2
+import re
+import os
+
+def count_words_in_pdf(file_path):
+  """Counts the number of words in a PDF file."""
+
+  try:
+    with open(file_path, 'rb') as pdf_file:
+      pdf_reader = PyPDF2.PdfReader(pdf_file)
+      text = ""
+      for page in pdf_reader.pages:
+        text += page.extract_text() 
+
+
+      words = re.findall(r'\w+', text)
+      return len(words)
+  except PyPDF2.errors.PdfReadError as e:
+    print(f"Error reading {file_path}: {e}")
+    return 0
+
+def list_files_with_page_counts_and_word_counts():
+  """Lists files in the current directory and displays the number of pages and words for PDF files."""
+
+  for file in os.listdir():
+    if file.endswith('.pdf'):
+      num_pages = len(PyPDF2.PdfReader(open(file, 'rb')).pages)
+      num_words = count_words_in_pdf(file)
+      print(f"{file}\t{num_pages}\t{num_words}")
+    else:
+      print(file)
+
+if __name__ == "__main__":
+  list_files_with_page_counts_and_word_counts()
+
+  
