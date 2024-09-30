@@ -27,7 +27,8 @@ def count_words_in_pdf(file_path):
 
 def list_files_with_page_counts_and_word_counts():
   """Lists files in the current directory and displays the number of pages and words for PDF files."""
-  print(f"{'file':<40}{'Pages':>10}{'Words':>20}")
+  print()
+  print(f"{'File':<40}{'Pages':>10}{'Words':>20}")
 
   for file in os.listdir():
     if file.endswith('.pdf'):
