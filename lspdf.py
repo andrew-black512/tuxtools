@@ -3,6 +3,7 @@
 import PyPDF2
 import re
 import os
+import pdb
 
 def count_words_in_pdf(file_path):
   """Counts the number of words in a PDF file."""
@@ -13,6 +14,9 @@ def count_words_in_pdf(file_path):
       text = ""
       for page in pdf_reader.pages:
         text += page.extract_text() 
+        # pdb.set_trace()
+
+        #print( text)
 
 
       words = re.findall(r'\w+', text)
