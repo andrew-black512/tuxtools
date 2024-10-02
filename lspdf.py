@@ -9,19 +9,26 @@ def print_annotation(p_page) :
    if "/Annots" in p_page:
         for annot in p_page["/Annots"]:
             obj = annot.get_object()
-            annotation = {"subtype": obj["/Subtype"], "location": obj["/Rect"]}
-            print(F"Ann {annotation}")
+            subtype = obj["/Subtype"]
+            #pdb.set_trace()
+            content = obj["/Contents"]
+            c = obj.get ( "/C", 'No /C' )
+            print(F"Annotation: {content}   {c} ")
 
 def count_words_in_pdf(file_path):
   """Counts the number of words in a PDF file."""
 
   try:
     with open(file_path, 'rb') as pdf_file:
+      print()
       pdf_reader = PyPDF2.PdfReader(pdf_file)
       text = ""
+      pageno = 0
       for page in pdf_reader.pages:
+        pageno = pageno + 1
+        print(F'Page:{pageno}')
         text += page.extract_text() 
-        pdb.set_trace()
+        #pdb.set_trace()
 
         #print( text)
         print_annotation(page)
