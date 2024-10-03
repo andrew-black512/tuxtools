@@ -1,8 +1,9 @@
 class HeadingPrinter:
     """Encapsulates the functionality of printing headings."""
 
-    def __init__(self):
+    def __init__(self, offset ):
         self.previous_title = None
+        self.offset = offset
 
     def print_heading(self, title, offset):
         """Prints the heading if it's different from the previous one.
@@ -14,11 +15,11 @@ class HeadingPrinter:
 
         if title != self.previous_title:
             self.previous_title = title
-            print(" " * offset + title)
+            print(" " * self.offset + title)
 
 # Usage:
-heading_printer = HeadingPrinter()
-heading_printer_2 = HeadingPrinter()
+heading_printer = HeadingPrinter(10)
+heading_printer_2 = HeadingPrinter(11)
 
 heading_printer.print_heading("aaa",10)
 heading_printer.print_heading("aaa",10)
