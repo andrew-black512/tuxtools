@@ -16,10 +16,15 @@ def print_annotation(p_page) :
         for annot in p_page["/Annots"]:
             obj = annot.get_object()
             subtype = obj["/Subtype"]
-            #pdb.set_trace()
-            content = obj["/Contents"]
-            c = obj.get ( "/C", 'No /C' )
-            print(F"Annotation: {content}   {c} ")
+            if subtype == "/Link" :
+               #print ("Ignore /Link")
+               bodge = 1
+            else :
+              #pdb.set_trace()
+              content = getanotfield(obj, "/Contents" ) 
+              c = obj.get ( "/C", 'No /C' )
+              print(F"        Annotation: {content}   {c} ")
+              print(F"      {subtype}")
 
 def count_words_in_pdf(file_path):
   """Counts the number of words in a PDF file."""
@@ -29,10 +34,9 @@ def count_words_in_pdf(file_path):
       print()
       pdf_reader = PyPDF2.PdfReader(pdf_file)
       text = ""
-      pageno = 0
-      for page in pdf_reader.pages:
+      for pageno,page in enumerate(pdf_reader.pages):
         pageno = pageno + 1
-        print(F'Page:{pageno}')
+        print(F'  Page:{pageno}')
         text += page.extract_text() 
         #pdb.set_trace()
 
