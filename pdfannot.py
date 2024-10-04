@@ -4,6 +4,7 @@ import PyPDF2
 import re
 import os
 import pdb
+import sys
 
 # customised version of dictionary .get with default
 def getanotfield(p_obj, p_fieldname) :
@@ -50,21 +51,13 @@ def count_words_in_pdf(file_path):
     print(f"Error reading {file_path}: {e}")
     return 0
 
-def list_files_with_page_counts_and_word_counts():
-  """Lists files in the current directory and displays the number of pages and words for PDF files."""
-  print()
-  print(f"{'File':<40}{'Pages':>10}{'Words':>20}")
 
-  for file in os.listdir():
-    if file.endswith('.pdf'):
-      try:
-        num_pages = len(PyPDF2.PdfReader(open(file, 'rb')).pages)
-        num_words = count_words_in_pdf(file)
-        print(f"{file:<40}{num_pages:>10}{num_words:>20}")
-      except PyPDF2.errors.PdfReadError as e:
-        print(f"Error reading {file}: {e}")
-    else:
-      print(file)
+def list_files_with_page_counts_and_word_counts():
+  """Extract annotation s and other info for a Pdf."""
+  
+  file = sys.argv[1] 
+  num_words = count_words_in_pdf(file)
+  #      print(f"{file:<40}{num_pages:>10}{num_words:>20}")
 
 if __name__ == "__main__":
   list_files_with_page_counts_and_word_counts()
