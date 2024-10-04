@@ -5,6 +5,12 @@ import re
 import os
 import pdb
 
+# customised version of dictionary .get with default
+def getanotfield(p_obj, p_fieldname) :
+    print()
+    value = p_obj.get(p_fieldname, F"No {p_fieldname}")
+    return value
+
 def print_annotation(p_page) :
    if "/Annots" in p_page:
         for annot in p_page["/Annots"]:
