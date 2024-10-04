@@ -25,7 +25,7 @@ def find_pdf_data(file_path):
     print(f"Error reading {file_path}: {e}")
     return 0
 
-def list_files_with_page_counts_and_word_counts():
+def list_files_with_data():
   """Lists files in the current directory and displays the number of pages and words for PDF files."""
   print()
   print(f"{'File':<40}{'Pages':>10}{'Words':>20}")
@@ -42,6 +42,6 @@ def list_files_with_page_counts_and_word_counts():
       print(file)
 
 if __name__ == "__main__":
-  list_files_with_page_counts_and_word_counts()
+  list_files_with_data()
 
   
