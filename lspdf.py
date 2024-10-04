@@ -23,16 +23,11 @@ def count_words_in_pdf(file_path):
       print()
       pdf_reader = PyPDF2.PdfReader(pdf_file)
       text = ""
-      pageno = 0
+      # accumulate text to see if it is textual of scanned
       for page in pdf_reader.pages:
-        pageno = pageno + 1
-        print(F'Page:{pageno}')
         text += page.extract_text() 
         #pdb.set_trace()
-
         #print( text)
-        print_annotation(page)
-
 
       words = re.findall(r'\w+', text)
       return len(words)
