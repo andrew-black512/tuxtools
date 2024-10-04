@@ -5,16 +5,6 @@ import re
 import os
 import pdb
 
-def print_annotation(p_page) :
-   if "/Annots" in p_page:
-        for annot in p_page["/Annots"]:
-            obj = annot.get_object()
-            subtype = obj["/Subtype"]
-            #pdb.set_trace()
-            content = obj["/Contents"]
-            c = obj.get ( "/C", 'No /C' )
-            print(F"Annotation: {content}   {c} ")
-
 def count_words_in_pdf(file_path):
   """Counts the number of words in a PDF file."""
 
