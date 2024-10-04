@@ -5,7 +5,7 @@ import re
 import os
 import pdb
 
-def count_words_in_pdf(file_path):
+def find_pdf_data(file_path):
   """Counts the number of words in a PDF file."""
 
   try:
@@ -34,7 +34,7 @@ def list_files_with_page_counts_and_word_counts():
     if file.endswith('.pdf'):
       try:
         num_pages = len(PyPDF2.PdfReader(open(file, 'rb')).pages)
-        num_words = count_words_in_pdf(file)
+        num_words = find_pdf_data(file)
         print(f"{file:<40}{num_pages:>10}{num_words:>20}")
       except PyPDF2.errors.PdfReadError as e:
         print(f"Error reading {file}: {e}")
