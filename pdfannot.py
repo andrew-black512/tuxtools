@@ -12,6 +12,9 @@ def getanotfield(p_obj, p_fieldname) :
     value = p_obj.get(p_fieldname, F"No {p_fieldname}")
     return value
 
+def diagprint (text):
+   return 0
+
 def print_annotation(p_page) :
    if "/Annots" in p_page:
         for annot in p_page["/Annots"]:
@@ -24,8 +27,8 @@ def print_annotation(p_page) :
               #pdb.set_trace()
               content = getanotfield(obj, "/Contents" ) 
               c = obj.get ( "/C", 'No /C' )
-              print(F"        Annotation: {content}   {c} ")
-              print(F"      {subtype}")
+              print(F"        Annotation: {content} ")
+              diagprint(F"      {subtype}   {c} ")
 
 def count_words_in_pdf(file_path):
   """Counts the number of words in a PDF file."""
