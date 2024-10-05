@@ -13,6 +13,7 @@ def getanotfield(p_obj, p_fieldname) :
     return value
 
 def diagprint (text):
+   print (F"   DIAG {text}")
    return 0
 
 def print_annotation(p_page) :
