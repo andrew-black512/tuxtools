@@ -1,0 +1,1 @@
+./buusb.sh work/dist
