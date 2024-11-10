@@ -1,8 +1,6 @@
 #this is 
 ./buusb.sh work
 
-./buusb.sh dev
-./buusb.sh Documents
+./buusb.sh Documents   # dont think there is much here.....
 
-./buusb.sh Downloads/docs_med
 ./buusb.sh Downloads
