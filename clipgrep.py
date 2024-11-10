@@ -3,7 +3,7 @@ import argparse
 import pyperclip
 import re
 
-def remove_lines_from_clipboard(regex, substitution_regex, append_file):
+def remove_lines_from_clipboard(regex, substitution_regex, append_file,args):
     """Removes lines matching the given regular expression from the clipboard,
     optionally substituting matched parts with a specified string, and appending
     the filtered lines to a file.
@@ -20,12 +20,7 @@ def remove_lines_from_clipboard(regex, substitution_regex, append_file):
     filtered_lines = []
     for line in lines:
         compiled_regex = re.compile(regex)
-
-# ... rest of your code
-
-        if not compiled_regex.match(line):
-
-        if not regex.match(line):
+        if not compiled_regex.search(line):
             filtered_lines.append(line)
         else:
             if substitution_regex:
@@ -39,12 +34,16 @@ def remove_lines_from_clipboard(regex, substitution_regex, append_file):
     if append_file:
         with open(append_file, 'a') as f:
             f.write(new_clipboard_text)
+    if args.verbose: 
+        print(new_clipboard_text)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Remove lines matching a regex from the clipboard.')
     parser.add_argument('-r', '--regex', required=True, help='The regular expression pattern to match.')
     parser.add_argument('-s', '--substitution-regex', help='The regular expression pattern for substitution.')
     parser.add_argument('-a', '--append-file', help='The file path to append the filtered lines to.')
+    parser.add_argument('-v', '--verbose', help='Filtered lines to stdout',
+                                 action='store_true')
     args = parser.parse_args()
 
-    remove_lines_from_clipboard(args.regex, args.substitution_regex, args.append_file)
+    remove_lines_from_clipboard(args.regex, args.substitution_regex, args.append_file, args)
