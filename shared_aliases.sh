@@ -8,7 +8,7 @@ alias scone='$TUXLOC/scone.py'
 alias lspdf='$TUXLOC/lspdf.py'
 alias pdfannot='$TUXLOC/pdfannot.py'
 
-alias cdtux='cd $LOC/tuxtools' 
+alias g.tux='cd $TUXLOC' 
 
 PATH=$PATH:$LOC/tuxtools
 set +x
