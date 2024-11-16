@@ -10,5 +10,5 @@ alias pdfannot='$TUXLOC/pdfannot.py'
 
 alias g.tux='cd $TUXLOC' 
 
-PATH=$PATH:$LOC/tuxtools
+PATH=$PATH:$TUXLOC
 set +x
