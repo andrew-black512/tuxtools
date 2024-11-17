@@ -1,4 +1,8 @@
 #!/bin/bash
+#    ./rmkdir.sh animals@localhost tempdir/a/b 
+#   If you are bold....
+#    ./rmkdir.sh animals@localhost tempdir/a/b -p
+
 
 # Replace with your server's IP address or hostname
 USER_SERVER=$1
