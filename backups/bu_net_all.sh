@@ -1,6 +1,10 @@
-./bu_animals.sh Documents 
-./bu_animals.sh work
-./bu_animals.sh dev
+function bu {
+    set -x
+    ./bu_network.sh ludford $1
+}
+bu Documents 
+bu work
+bu dev
 
 
 
