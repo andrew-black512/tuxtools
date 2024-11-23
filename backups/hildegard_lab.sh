@@ -1,12 +1,13 @@
 function bu {
     TT=$(dirname $0)
 
-    $TT/bu_network.sh andrew@ludford $1
+    $TT/bu_network.sh lesley@ludford $1
 }
 bu Documents 
 
-bu work
-bu dev
+# currently this doesnt have anything (much?) in it but maybe odd screenshots
+# no harm in backing it up.
+bu Photos
 
 
 
