@@ -9,8 +9,8 @@ def main():
   # Add argument for the text to be tagged (required)
   parser.add_argument("text", type=str, help="The text to be included within the tag.")
 
-  # Add optional argument for tag name (defaults to 'text')
-  parser.add_argument("--tag", type=str, default="text",
+  # Add optional argument for tag name 
+  parser.add_argument("--tag", type=str, default="rant",
                       help="The tag to be used for wrapping text (default: text).")
 
   # Add optional argument for escaping angle brackets
