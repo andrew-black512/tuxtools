@@ -3,7 +3,7 @@
 import argparse
 import datetime
 
-def get_years(day, start_year, end_year, target_date):
+def get_years(day, start_year, end_year, target_date_str):
     """
     Gets the years within a given date range that match a specific weekday and date.
 
