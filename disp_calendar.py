@@ -27,7 +27,7 @@ def print_calendar(start_date, num_weeks):
     current_date = first_day_of_week
     first_time = True
     while current_date < end_date  :
-        mon_str = f"{current_date:%b}" if (current_date.day <=q 7 or first_time) else "   " 
+        mon_str = f"{current_date:%b}" if (current_date.day <= 7 or first_time) else "   " 
         print(f"{mon_str}   ", end="")
         first_time = False
 
