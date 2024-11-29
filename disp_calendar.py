@@ -2,6 +2,11 @@
 
 import argparse
 import datetime
+#----------------------------------------------------------------------
+from termcolor import colored, cprint
+print_hol = lambda x: cprint(x, "yellow", end=" ")
+
+#----------------------------------------------------------------------
 
 def print_calendar(start_date, num_weeks):
     """Prints a calendar starting from the given start date for the specified number of weeks.
@@ -32,11 +37,15 @@ def print_calendar(start_date, num_weeks):
         first_time = False
 
         for day_of_week in range(7) :
+            date_str = f"{current_date.day:2d}  "
             # Print the date, highlighting today's date
             if current_date == datetime.date.today():
-                print(f" \033[31m{current_date.day:2d}\033[0m  ", end="")  # Highlight today's date in red
+                print(f"\033[31m{current_date.day:2d}\033[0m  ", end="")  # Highlight today's date in red
             else:
-                print(f" {current_date.day:2d}  ", end="")
+                if day_of_week >= 5 :
+                    print_hol(date_str)
+                else :
+                    print(date_str, end="")
             if day_of_week == 4 :
                 print("  ", end="")
 
