@@ -1,33 +1,30 @@
 #!/usr/bin/python3
-
 import argparse
+import pyperclip
 
 def main():
-  """Parses command-line arguments and generates pseudo XML for chat."""
-  parser = argparse.ArgumentParser(description="Generate pseudo XML for chat.")
+    """Parses command-line arguments, generates pseudo XML for chat, and copies to clipboard."""
+    parser = argparse.ArgumentParser(description="Generate pseudo XML for chat.")
 
-  # Add argument for the text to be tagged (required)
-  parser.add_argument("text", type=str, help="The text to be included within the tag.")
+    parser.add_argument("--tag", type=str, default="rant", help="The tag to be used for wrapping text (default: text).")
+    parser.add_argument("--escape", action="store_true", default=False, help="Escape angle brackets for chat environments.")
 
-  # Add optional argument for tag name 
-  parser.add_argument("--tag", type=str, default="rant",
-                      help="The tag to be used for wrapping text (default: text).")
+    args = parser.parse_args()
 
-  # Add optional argument for escaping angle brackets
-  parser.add_argument("--escape", action="store_true", default=False,
-                      help="Escape angle brackets for chat environments.")
+    try:
+        # Get the text from the clipboard
+        text = pyperclip.paste()
 
-  # Parse arguments from the command line
-  args = parser.parse_args()
+        if args.escape:
+            pseudo_xml = f"&lt;{args.tag}&gt;{text}&lt;/{args.tag}&gt;"
+        else:
+            pseudo_xml = f"<{args.tag}>{text}</{args.tag}>"
 
-  # Generate the pseudo XML output, optionally escaping angle brackets
-  if args.escape:
-      pseudo_xml = f"&lt;{args.tag}&gt;{args.text}&lt;/{args.tag}&gt;"
-  else:
-      pseudo_xml = f"<{args.tag}>{args.text}</{args.tag}>"
-
-  # Print the result
-  print(pseudo_xml)
+        print(pseudo_xml)
+        pyperclip.copy(pseudo_xml)
+        print("Copied to clipboard!")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-  main()
+    main()
