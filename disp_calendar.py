@@ -4,7 +4,7 @@ import argparse
 import datetime
 #----------------------------------------------------------------------
 from termcolor import colored, cprint
-print_hol = lambda x: cprint(x, "yellow", end=" ")
+print_hol = lambda x: cprint(x, "yellow", end="")
 #https://pypi.org/project/termcolor/
 #----------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ def print_calendar(start_date, num_weeks):
     end_date = first_day_of_week + datetime.timedelta(weeks=num_weeks)
 
     # Print the header
-    print("       Mon  Tue  Wed  Thu  Fri    Sat  Sun")
+    print("      Mon Tue Wed Thu Fri Sat Sun")
     print()
         
     # Iterate through each week
@@ -46,8 +46,6 @@ def print_calendar(start_date, num_weeks):
                     print_hol(date_str)
                 else :
                     print(date_str, end="")
-            if day_of_week == 4 :
-                print("  ", end="")
 
             current_date += datetime.timedelta(days=1)
 
