@@ -5,6 +5,7 @@ import re
 import os
 import pdb
 import sys
+import argparse
 
 # customised version of dictionary .get with default
 def getanotfield(p_obj, p_fieldname) :
@@ -31,7 +32,7 @@ def print_annotation(p_page) :
               print(F"        Annotation: {content} ")
               diagprint(F"      {subtype}   {c} ")
 
-def count_words_in_pdf(file_path):
+def print_annotations(file_path):
   """Counts the number of words in a PDF file."""
 
   try:
@@ -55,15 +56,19 @@ def count_words_in_pdf(file_path):
     print(f"Error reading {file_path}: {e}")
     return 0
 
+def main():
+    parser = argparse.ArgumentParser(description="Annotate PDF files.")
+    parser.add_argument("files", nargs="+", help="PDF file(s) to annotate.")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
+    parser.add_argument("-g", "--regex", type=str, help="Regular expression to highlight.")
+    parser.add_argument("-p", "--page_numbers", action="store_true", help="Add page number annotations.")
 
-def list_files_with_page_counts_and_word_counts():
-  """Extract annotation s and other info for a Pdf."""
-  
-  file = sys.argv[1] 
-  num_words = count_words_in_pdf(file)
-  #      print(f"{file:<40}{num_pages:>10}{num_words:>20}")
+    args = parser.parse_args()
+
+    for filepath in args.files:
+        print_annotations(filepath)
+        # annotate_pdf(filepath, args.regex, args.page_numbers, args.verbose)
+
 
 if __name__ == "__main__":
-  list_files_with_page_counts_and_word_counts()
-
-  
+    main()
