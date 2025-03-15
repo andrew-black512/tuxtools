@@ -18,7 +18,7 @@ body, html {
 }
 
 #draggable-region {
-  flex: 1; /* Key change: Allow draggable region to take up available space */
+  flex: 1;
   height: 100%;
   border: 1px dashed #ccc;
   position: relative;
@@ -43,6 +43,22 @@ body, html {
   margin-bottom: 10px;
   box-sizing: border-box;
 }
+
+.red {
+  background-color: red;
+  color: white;
+}
+.white-on-black {
+  background-color: black;
+  color: white;
+}
+
+
+.blue-large {
+  background-color: blue;
+  color: white;
+  font-size: 1.5em;
+}
 </style>
 </head>
 <body>
@@ -50,6 +66,12 @@ body, html {
 <div id="left-panel">
   <h2>Add Words</h2>
   <input type="text" id="word-input" placeholder="Enter a word">
+  <select id="style-select">
+    <option value="">Default</option>
+    <option value="red">Red</option>
+    <option value="white-on-black">White on black</option>
+    <option value="blue-large">Blue Large</option>
+  </select>
   <button onclick="addWord()">Add Word</button>
   <div id="word-list"></div>
 </div>
@@ -61,6 +83,7 @@ body, html {
 const draggableRegion = document.getElementById('draggable-region');
 const wordInput = document.getElementById('word-input');
 const wordList = document.getElementById('word-list');
+const styleSelect = document.getElementById('style-select');
 
 let isDragging = false;
 let currentWord = null;
@@ -68,10 +91,15 @@ let offsetX, offsetY;
 
 function addWord() {
   const wordText = wordInput.value.trim();
+  const selectedStyle = styleSelect.value;
   if (wordText !== "") {
     const wordDiv = document.createElement('div');
     wordDiv.classList.add('word');
     wordDiv.textContent = wordText;
+
+    if (selectedStyle) {
+      wordDiv.classList.add(selectedStyle);
+    }
 
     const randomX = Math.random() * (draggableRegion.offsetWidth - wordDiv.offsetWidth);
     const randomY = Math.random() * (draggableRegion.offsetHeight - wordDiv.offsetHeight);
