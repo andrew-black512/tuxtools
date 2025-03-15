@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Draggable Words</title>
+<style>
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+}
+
+#left-panel {
+  width: 20%;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+#draggable-region {
+  flex: 1; /* Key change: Allow draggable region to take up available space */
+  height: 100%;
+  border: 1px dashed #ccc;
+  position: relative;
+}
+
+.word {
+  position: absolute;
+  background-color: lightblue;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: grab;
+  user-select: none;
+  white-space: nowrap;
+}
+.word:active {
+  cursor: grabbing;
+}
+
+#word-input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+
+<div id="left-panel">
+  <h2>Add Words</h2>
+  <input type="text" id="word-input" placeholder="Enter a word">
+  <button onclick="addWord()">Add Word</button>
+  <div id="word-list"></div>
+</div>
+
+<div id="draggable-region">
+</div>
+
+<script>
+const draggableRegion = document.getElementById('draggable-region');
+const wordInput = document.getElementById('word-input');
+const wordList = document.getElementById('word-list');
+
+let isDragging = false;
+let currentWord = null;
+let offsetX, offsetY;
+
+function addWord() {
+  const wordText = wordInput.value.trim();
+  if (wordText !== "") {
+    const wordDiv = document.createElement('div');
+    wordDiv.classList.add('word');
+    wordDiv.textContent = wordText;
+
+    const randomX = Math.random() * (draggableRegion.offsetWidth - wordDiv.offsetWidth);
+    const randomY = Math.random() * (draggableRegion.offsetHeight - wordDiv.offsetHeight);
+    wordDiv.style.left = randomX + 'px';
+    wordDiv.style.top = randomY + 'px';
+
+    draggableRegion.appendChild(wordDiv);
+    wordDiv.addEventListener('mousedown', startDrag);
+
+    wordInput.value = "";
+
+    const listItem = document.createElement('li');
+    listItem.textContent = wordText;
+    wordList.appendChild(listItem);
+  }
+}
+
+function startDrag(e) {
+  isDragging = true;
+  currentWord = this;
+
+  offsetX = e.clientX - currentWord.offsetLeft;
+  offsetY = e.clientY - currentWord.offsetTop;
+
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', endDrag);
+}
+
+function drag(e) {
+  if (isDragging && currentWord) {
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
+
+    const maxX = draggableRegion.offsetWidth - currentWord.offsetWidth;
+    const maxY = draggableRegion.offsetHeight - currentWord.offsetHeight;
+
+    const clampedX = Math.max(0, Math.min(x, maxX));
+    const clampedY = Math.max(0, Math.min(y, maxY));
+
+    currentWord.style.left = clampedX + 'px';
+    currentWord.style.top = clampedY + 'px';
+  }
+}
+
+function endDrag() {
+  isDragging = false;
+  currentWord = null;
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('mouseup', endDrag);
+}
+</script>
+
+</body>
+</html>
