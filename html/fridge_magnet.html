@@ -72,7 +72,8 @@ body, html {
 <body>
 
 <div id="left-panel">
-  <h2>Add Words</h2>
+  <h2>Add Phrases</h2>
+  <p>Enter phrase, select style and hit enter</p>
   <input type="text" id="word-input" placeholder="Enter a word">
   <select id="style-select">
     <option value="">Default</option>
@@ -125,6 +126,12 @@ function addWord() {
     wordList.appendChild(listItem);
   }
 }
+wordInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default form submission
+        addWord();
+    }
+});
 
 function startDrag(e) {
   isDragging = true;
