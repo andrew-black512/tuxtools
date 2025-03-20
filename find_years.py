@@ -34,7 +34,7 @@ def get_years(day, start_year, end_year, target_date_str):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Find years matching a specific weekday and date.')
-    parser.add_argument('--day', type=str, required=True, 
+    parser.add_argument('--day', type=str, default="sat",
                         help='Target weekday (e.g., mon, tue, wed)')
     parser.add_argument('--start-year', type=int, default=1980, 
                         help='Starting year of the range')
