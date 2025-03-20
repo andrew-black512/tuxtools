@@ -25,17 +25,21 @@ def print_calendar(start_date, num_weeks):
     end_date = first_day_of_week + datetime.timedelta(weeks=num_weeks)
 
     # Print the header
-    print("      Mon Tue Wed Thu Fri Sat Sun")
+    print("                Mon Tue Wed Thu Fri Sat Sun")
     print()
         
     # Iterate through each week
     current_date = first_day_of_week
     first_time = True
     while current_date < end_date  :
+        weeknum = current_date.isocalendar().week
+        print(f"  w{weeknum:02}     ", end='')
+        
         mon_str = f"{current_date:%b}" if (current_date.day <= 7 or first_time) else "   " 
         print(f"{mon_str}   ", end="")
         first_time = False
 
+        
         for day_of_week in range(7) :
             date_str = f"{current_date.day:2d}  "
             # Print the date, highlighting today's date
