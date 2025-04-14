@@ -11,14 +11,11 @@ OPTS='--delete-during -a -v'
 #    TODO --backup-dir=BACKUP '
 
 DEST=$DRIVE/$TOPDIR
-##mkdir -p $DEST/$SUB
 
 TOPDIR=$HOSTNAME   
 DRIVE="$NODE.local:Public/backups"
 
 DEST=$DRIVE/$TOPDIR
-##mkdir -p $DEST/$SUB
 set -x
 rsync ~/$SUB/  $DEST/$SUB  $OPTS
 
-#tree -d $DEST
