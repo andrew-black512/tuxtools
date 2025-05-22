@@ -18,8 +18,8 @@ end
 def helpandexit
     puts <<HELP 
     
-    zoneify.rb  filemask [format]
-        (remember to quote regep)
+    zoneify.rb  "filemask" [format]
+        (remember to quote filemask)
         
 HELP
     exit
