@@ -43,6 +43,6 @@ Dir.glob(fileglob).each do |filename|
         createdir dirname
 
         puts "  Move #{filename} to #{dirname}" 
-        # FileUtils.mv( filename, dirname + '/' )
+        FileUtils.mv( filename, dirname + '/' )
     end 
 end
