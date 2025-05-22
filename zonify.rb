@@ -37,10 +37,12 @@ fileglob = ARGV.shift
 format = ARGV.count == 1 ? ARGV.shift  :   '%Y_%m_%d'
 
 Dir.glob(fileglob).each do |filename|
-   f=File.new filename
-   dirname = f.mtime.strftime( format )  # _%d configurable?s
-   createdir dirname
+    if File.file?(filename)       # not directory
+        f=File.new filename
+        dirname = f.mtime.strftime( format )  # _%d configurable?s
+        createdir dirname
 
-   puts "  Move #{filename} to #{dirname}" 
-   FileUtils.mv( filename, dirname + '/' ) 
+        puts "  Move #{filename} to #{dirname}" 
+        # FileUtils.mv( filename, dirname + '/' )
+    end 
 end
