@@ -20,7 +20,7 @@ def main():
     # \d+ : one or more digits
     # \s+ : one or more whitespace characters
     pattern = r"\d+\s+"
-    
+    pattern2 = r"<[^>]*>"
     # Replacement string (empty string for deletion)
     replacement = r""
 
@@ -31,6 +31,7 @@ def main():
             for line in file:
                 # Perform the substitution (s/pattern/replacement/g equivalent)
                 modified_line = re.sub(pattern, replacement, line)
+                modified_line = re.sub(pattern2, replacement, modified_line)
                 
                 # Print the resulting line
                 print(modified_line, end='')
