@@ -31,6 +31,7 @@ def main():
             for line in file:
                 # Perform the substitution (s/pattern/replacement/g equivalent)
                 modified_line = re.sub(pattern, replacement, line)
+                modified_line = re.sub(r"<TI>", "# ", modified_line)
                 modified_line = re.sub(pattern2, replacement, modified_line)
                 
                 # Print the resulting line
