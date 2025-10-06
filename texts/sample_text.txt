@@ -1,0 +1,10 @@
+100 1 this is 
+100 1 not
+100 2 middle dutch
+
+<aa ;> this is not 
+<b>xml
+
+Van_seven_trappen.txt:1075:
+<"1049"><TI>Dit es de sevende trappe</TI>
+<sp><cb><ub>Chapter IV<ue><ce>-
