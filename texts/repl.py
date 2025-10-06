@@ -5,7 +5,7 @@ import re
 def main():
     """
     Reads a file specified on the command line and performs the
-    replacement s/\d+\s+/ on each line, printing the result.
+    replacement s/\\d+\\s+/ on each line, printing the result.
     """
     # 1. Check if the filename argument is provided
     if len(sys.argv) < 2:
