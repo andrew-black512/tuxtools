@@ -8,3 +8,4 @@
 Van_seven_trappen.txt:1075:
 <"1049"><TI>Dit es de sevende trappe</TI>
 <sp><cb><ub>Chapter IV<ue><ce>-
+out/Van_seven_trappen.txt:11:sprect de prophete David: 'Heere, ic ben tote u ghe% vloon; leert mi te wer-
