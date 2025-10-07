@@ -19,8 +19,8 @@ def main():
     # Define the regular expression pattern:
     # \d+ : one or more digits
     # \s+ : one or more whitespace characters
-    pattern = r"\d+\s+"
-    pattern2 = r"<[^>]*>"
+    digitbit = r"\d+\s+"
+    xmltag = r"<[^>]*>"
     # Replacement string (empty string for deletion)
     replacement = r""
 
@@ -30,9 +30,14 @@ def main():
             # 3. Process each line
             for line in file:
                 # Perform the substitution (s/pattern/replacement/g equivalent)
-                modified_line = re.sub(pattern, replacement, line)
+                modified_line = re.sub(digitbit, replacement, line)
+                
+                # process useful XML-ish tags
+                modified_line = re.sub(r"<ub>", "   UB:", modified_line)
                 modified_line = re.sub(r"<TI>", "# ", modified_line)
-                modified_line = re.sub(pattern2, replacement, modified_line)
+                
+                # zap the rest
+                modified_line = re.sub(xmltag, replacement, modified_line)
                 
                 # Print the resulting line
                 print(modified_line, end='')
