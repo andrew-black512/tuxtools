@@ -33,10 +33,12 @@ def main():
                 modified_line = re.sub(digitbit, replacement, line)
                 
                 # process useful XML-ish tags
-                modified_line = re.sub(r"<ub>", "   UB:", modified_line)
+                # anything betwee  <ub> <ue> is boring. Note non greedy
+                modified_line = re.sub( r"<ub>.*?<ue>",'', modified_line)
                 modified_line = re.sub(r"<TI>", "# ", modified_line)
                 
                 modified_line = re.sub(r"% ", "", modified_line)
+
                 # double hyphen - line but not word break
                 modified_line = re.sub('--\n','' , modified_line)
                 
