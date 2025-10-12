@@ -81,10 +81,7 @@ def generate_author_timeline(authors_data):
 sample_authors = [
     ('John of Ruusbroec', 1294, 1381),
     ('Hildegard of Bingen', 1098, 1179),
-    ('Geoffrey Chaucer', 1343, 1400),
-    ('William Shakespeare', 1564, 1616),
-    ('Jane Austen', 1775, 1817),
-    ('Virginia Woolf', 1882, 1941)
+
 ]
 
 if __name__ == '__main__':
