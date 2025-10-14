@@ -81,6 +81,21 @@ def generate_author_timeline(authors_data):
 sample_authors = [
     ('John of Ruusbroec', 1294, 1381),
     ('Hildegard of Bingen', 1098, 1179),
+    ('Francis of Assisi', 1181, 1226),
+    ('Clare of Assisi', 1193, 1253),
+    ('Bonaventure', 1221, 1274),
+    ('William of St Thierry', 1075, 1148),
+    ('Bernard of Clairvaux', 1090, 1153),
+    ('Julian of Norwich', 1342, 1416),
+    ('Margery Kempe', 1373, 1438),
+    ('Hadewijch (fl 1240)', 1210, 1260),
+    ('Marguerite Porete', 1258, 1310),
+    ('Angela of Foligno', 1248, 1309),
+    ('Meister Eckhart', 1260, 1328),
+    ('Thomas Aquinas', 1225, 1274),
+    ('Mechtild of Madgeburg', 1207, 1282    ),
+    ('Teresa of Avila', 1515, 1582),
+    ('John of the Cross', 1542, 1591),
 
 ]
 
